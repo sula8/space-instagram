@@ -1,6 +1,7 @@
 
 .DS_Store
+.idea/
 images/
-.jpg
+*.jpg
 .env
 space_env/
