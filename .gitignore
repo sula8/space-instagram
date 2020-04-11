@@ -1,7 +1,10 @@
 
 .DS_Store
-.idea/
-images/
-space_env/
+__pycache__
+.idea
+config
+crop_folder
+img
+
 *.jpg
 .env
