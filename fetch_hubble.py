@@ -7,7 +7,7 @@ def fetch_hubble(collection='printshop'):
   collection_response = requests.get(collection_url)
   ids = [response['id'] for response in collection_response.json()]
 
-  for img_id in ids[:5]:
+  for img_id in ids:
     hubble_url = 'http://hubblesite.org/api/v3/image/{}'.format(img_id)
     response = requests.get(hubble_url)
     img_raw_url = response.json()['image_files'][-1]['file_url'].replace('//', 'https://')

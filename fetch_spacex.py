@@ -7,6 +7,6 @@ def fetch_spacex():
   response = requests.get(spacex_url)
   img_links = response.json()['links']['flickr_images']
 
-  for link in img_links[:5]:
+  for link in img_links:
     filename = link.split('/')[-1]
     download_img(link, filename)
