@@ -4,23 +4,19 @@ from PIL import Image
 from os import listdir
 
 
-def download_img(url, filename):
-  img_folder = os.getenv("IMG_FOLDER")
-  os.makedirs(img_folder, exist_ok=True)
-  file_path = os.path.join(img_folder, filename)
+def download_img(url, filename, img_folder):
+    os.makedirs(img_folder, exist_ok=True)
+    file_path = os.path.join(img_folder, filename)
 
-  response = requests.get(url)
-  response.raise_for_status()
+    response = requests.get(url)
+    response.raise_for_status()
 
-  with open(file_path, 'wb') as file:
-    file.write(response.content)
+    with open(file_path, 'wb') as file:
+        file.write(response.content)
 
 
-def crop_img():
-    img_folder = os.getenv("IMG_FOLDER")
-    crop_folder = os.getenv("CROP_FOLDER")
+def crop_img(img_folder, crop_folder):
     os.makedirs(crop_folder, exist_ok=True)
-
     for img in listdir(img_folder):
         image = Image.open(f"./{img_folder}/{img}")
 
@@ -34,5 +30,3 @@ def crop_img():
         cropped = image.crop(coordinates)
         cropped.thumbnail((1080, 1080))
         cropped.save(f"./{crop_folder}/{img}", format="JPEG")
-
-
